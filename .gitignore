@@ -1,0 +1,19 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Next.js & Build
+/.next/
+/out/
+/build
+
+# Environment variables
+.env*.local
+.env
+
+# Debug & Misc
+npm-debug.log*
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts

@@ -1,0 +1,27 @@
+extensiones vs code
+ESlint
+ES7
+Image Preview
+Prettier code formatter
+Tailwind css intelligency
+
+radix-ui
+npm i @radix-ui/react-tooltip
+npm i @radix-ui/react-separator
+npm i @radix-ui/react-scroll-area
+npm i @radix-ui/react-hover-card
+npm i lucide-react
+
+Props
+type DialogProps = {
+    trigger: ReactNode;
+    children: ReactNode;
+    id?:           number; //cuando se define con ? significa que puede o no usarse
+    titulo?:       string;
+    genero?:       string;
+    sinopsis?:     string;
+    urlPortada?:   string;
+    estreno?:      number;
+    calificacion?: number;
+    plataforma?:   string;
+};

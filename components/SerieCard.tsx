@@ -1,4 +1,7 @@
-import React from "react";
+"use client"
+
+import SerieModal from "@/app/series/components/SerieModal";
+import { ReactNode } from "react";
 type SerieCardProps = {
   id: number;
   titulo: string;
@@ -8,6 +11,7 @@ type SerieCardProps = {
   estreno: number;
   calificacion: number;
   plataforma: string;
+  action?: ReactNode;
 };
 
 function renderStars(rating: number) {
@@ -36,40 +40,41 @@ export default function SerieCard({
   estreno,
   calificacion,
   plataforma,
+  action,
 }: SerieCardProps) {
   return (
-    <div className="bg-white rounded-xl shadow-md p-4 overflow-hidden w-72 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+    <div className="bg-white rounded-xl shadow-md p-4 overflow-hidden w-72 hover:shadow-lg transition-shadow duration-300">
         <img
-          className="w-lg h-64  rounded-md mb-4"
           src={urlPortada}
           alt={titulo}
+          className="w-full h-48 object-cover rounded-md mb-4"
         />
-      
-        <div className="p-4 flex flex-col">
-          <h2 className="font-semibold text-lg text-gray-800">{titulo}</h2>
-          <span className="text-sm text-black">Género: {genero}</span>
-          <div className="flex items-center mt-2">
-            <span className="text-sm font-bold text-blue-600 mr-2">
-              Calificación:
-            </span>
-            <span className="text-sm font-bold text-blue-700">
-              {renderStars(calificacion)}
-            </span>
+        <div className="p-4 flex h-full flex-col justify-between">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="font-semibold text-lg text-gray-800 flex-1">{titulo}</h2>
+            </div>
+            <span className="text-sm text-black">Género: {genero}</span>
+            
+            <div className="flex items-center mt-2">
+              <span className="text-sm font-bold text-blue-600 mr-2">
+                Calificación:
+              </span>
+              <span className="text-sm font-bold text-blue-700">
+                {renderStars(calificacion)}
+              </span>
+            </div>
           </div>
-          <div className="flex items-center mt-2">
-            <span className="text-sm font-bold text-blue-600">
-              Estreno: {estreno}
-            </span>
-          </div>
-          <div className="flex items-center mt-2">
-            <span className="text-sm font-bold text-blue-600">
-              Plataforma: {plataforma}
-            </span>
-          </div>
-          <div className="flex items-center mt-2">
-            <span className="text-sm font-bold text-black">
-              Sinopsis: {truncateSinopsis(sinopsis)}
-            </span>
+          <div>
+            <SerieModal
+              titulo={titulo}
+              genero={genero}
+              sinopsis={sinopsis}
+              urlPortada={urlPortada}
+              estreno={estreno}
+              calificacion={calificacion}
+              plataforma={plataforma}
+            />
           </div>
         </div>
     </div>

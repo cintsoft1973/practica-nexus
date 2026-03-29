@@ -5,7 +5,7 @@ import { url } from "inspector";
 import { ReactNode } from "react";
 type DialogProps = {
     trigger: ReactNode;
-    children: ReactNode;
+    children?: ReactNode;
     id?:           number;
     titulo?:       string;
     genero?:       string;
@@ -44,12 +44,11 @@ export default function Dialog({
         </DialogPrimitive.Trigger>
         <DialogPrimitive.Portal>
             <DialogPrimitive.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
-            <DialogPrimitive.Content className="fixed items-center bg-white p6 rounded-xl shadow-xl top-1/2 left-1/d -translate-y-1/2 ${sizes[size]}">
+            <DialogPrimitive.Content className={`fixed items-center bg-white p-6 rounded-xl shadow-xl top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 ${sizes[size]}`}>
                 {titulo && (<DialogPrimitive.Title className="text-xl font-bold mb-2">{titulo}</DialogPrimitive.Title>)}
-                {urlPortada && <img src={urlPortada} 
-                                    alt={titulo} 
-                                    className="w-full h-48 object-cover rounded mb-4" 
-                                    fill
+                {urlPortada && <img src={urlPortada}
+                                    alt={titulo}
+                                    className="w-full h-48 object-cover rounded mb-4"
                                     height={300}
                                     width={500}
                                     />

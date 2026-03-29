@@ -1,10 +1,6 @@
-import { GetSerieResponse } from "../interfaces/getserie.interface";
+import { apiFetch } from "@/service/api";
+import { GetSerieResponse } from '../interfaces/getserie.interface';
 
 export async function getSeries(): Promise<GetSerieResponse[]> {
-    const response = await fetch('https://nestflix.onrender.com/series');
-    if (!response.ok) {
-        throw new Error('Error al obtener las series: ' + response.status);
-    }
-    const data = await response.json();
-    return data;
+    return apiFetch<GetSerieResponse[]>('/series');
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import Dialog from "@/components/Dialog";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 
 type serieModalProps = {
     titulo: string;
@@ -22,7 +23,7 @@ export default function SerieModal({
 }: serieModalProps) {
     return (
         <Dialog
-            trigger={<button className="inline-flex items-center justify-center rounded bg-blue-600 px-4 py-2 text-base font-semibold text-white shadow-sm shadow-blue-200 hover:bg-blue-700 transition-colors">Ver detalles</button>}
+            trigger={<button type="button" className="inline-flex w-full items-center justify-center rounded bg-blue-600 px-4 py-2 text-base font-semibold text-white shadow-sm shadow-blue-200 hover:bg-blue-700 transition-all duration-200 opacity-100">Ver detalles</button>}
             titulo={titulo}
             genero={genero}
             sinopsis={sinopsis}
@@ -30,7 +31,11 @@ export default function SerieModal({
             estreno={estreno}
             calificacion={calificacion}
             plataforma={plataforma}
-            footer={<button className="bg-gray-200 px-3 py-1 rounded">Cerrar</button>}
+            footer={
+                <DialogPrimitive.Close asChild>
+                    <button className="bg-red-600 text-white px-3 py-1 rounded">Cerrar</button>
+                </DialogPrimitive.Close>
+            }
         />
     );
 }
